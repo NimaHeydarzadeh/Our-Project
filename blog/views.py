@@ -4,3 +4,7 @@ from django.shortcuts import render
 
 def post(request):
     return render(request,'blog/Post.html',context={})
+
+
+def posts(request):
+    return render(request, 'blog/Posts.html', context={})
