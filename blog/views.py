@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.db import models
+# from .models import Post, UserProfile
 # Create your views here.
 
 
@@ -13,6 +14,7 @@ def post(request):
 
 def posts(request):
     return render(request, 'blog/Posts.html', context={})
+
 
 def about(request):
     return render(request, 'blog/about.html', context={})
