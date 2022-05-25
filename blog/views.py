@@ -13,3 +13,6 @@ def post(request):
 
 def posts(request):
     return render(request, 'blog/Posts.html', context={})
+
+def about(request):
+    return render(request, 'blog/about.html', context={})
