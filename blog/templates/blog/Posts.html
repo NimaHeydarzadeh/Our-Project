@@ -7,7 +7,11 @@
     <meta name="keywords" content="Title 1, Title 2, Contact Us" />
     <meta name="description" content="" />
     <title>Posts</title>
-    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/nicepage.css' %}"
+      media="screen"
+    />
     <link rel="stylesheet" href="{% static 'css/Posts.css' %}" media="screen" />
     <script
       class="u-script"
@@ -87,7 +91,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base"
-                  href="Home.html"
+                  href="{% url 'home' %}"
                   style="padding: 10px 20px"
                   >Home</a
                 >
@@ -128,7 +132,7 @@
                   class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"
                 >
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="Home.html"
+                    <a class="u-button-style u-nav-link" href="{% url 'home' %}"
                       >Home</a
                     >
                   </li>

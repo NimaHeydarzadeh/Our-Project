@@ -14,8 +14,12 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_absolute_url(self):
+        return reverse_lazy("profile", kwargs={"username": self.user.username})
+
 
 class Post(models.Model):
+    slug = models.SlugField(max_length=100, blank=True)
     auth = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
