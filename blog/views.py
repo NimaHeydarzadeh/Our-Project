@@ -20,4 +20,8 @@ def posts(request):
 
 
 def about(request):
-    return render(request, 'blog/about.html', context={})
+    return render(request, 'blog/About.html', context={})
+
+
+def contact(request):
+    return render(request, 'blog/Contact.html', context={})

@@ -42,6 +42,7 @@
 .u-section-1 .u-btn-1 {
   width: 100%;
   border-style: none;
+  font-size: 1.25rem;
   background-image: none;
   padding: 10px 31px 10px 29px;
 }
@@ -49,7 +50,7 @@
 .u-section-1 .u-btn-2 {
   border-style: none;
   font-weight: 700;
-  margin: 39px auto 0;
+  margin: 33px auto 0;
   padding: 0;
 }
 
