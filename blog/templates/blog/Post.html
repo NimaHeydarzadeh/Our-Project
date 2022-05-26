@@ -12,7 +12,7 @@
       href="{% static 'css/nicepage.css' %}"
       media="screen"
     />
-    <link rel="stylesheet" href="{% static 'css/Post.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'post/Post.css' %}" media="screen" />
     <script
       class="u-script"
       type="text/javascript"
@@ -334,14 +334,20 @@
           <div class="u-layout">
             <div class="u-layout-row">
               <div
-                class="u-container-style u-image u-layout-cell u-left-cell u-size-20 u-image-1"
-                src=""
-                data-image-width="900"
-                data-image-height="638"
+                class="u-container-style u-layout-cell u-left-cell u-size-20"
               >
                 <div
                   class="u-container-layout u-valign-middle u-container-layout-1"
-                ></div>
+                  data-image-width="900"
+                  data-image-height="638"
+                >
+                  <img
+                    src="{% static 'img/comment_profile.jpg' %}"
+                    class="u-container-style u-layout-cell u-left-cell u-size-20"
+                    height="400"
+                    width="400"
+                  />
+                </div>
               </div>
               <div
                 class="u-align-left u-container-style u-layout-cell u-right-cell u-size-40 u-white u-layout-cell-2"
