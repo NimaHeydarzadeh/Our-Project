@@ -38,9 +38,15 @@
           </div>
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="{% url 'home' %}" style="padding: 10px 20px;">Home</a>
+<<<<<<< HEAD
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="Posts.html" style="padding: 10px 20px;">Posts</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="Contact.html" style="padding: 10px 20px;">Contact</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="About.html" style="padding: 10px 20px;">About</a>
+=======
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="{% url 'posts' %}" style="padding: 10px 20px;">Posts</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="{% url 'contact' %}" style="padding: 10px 20px;">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base" href="{% url 'about' %}" style="padding: 10px 20px;">About</a>
+>>>>>>> 0e90695f7c7f08a9045c29d8f94eb6f3037a915d
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -48,9 +54,15 @@
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'home' %}">Home</a>
+<<<<<<< HEAD
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Posts.html">Posts</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
+=======
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'posts' %}">Posts</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'contact' %}">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'about' %}">About</a>
+>>>>>>> 0e90695f7c7f08a9045c29d8f94eb6f3037a915d
 </li></ul>
               </div>
             </div>
@@ -61,7 +73,7 @@
           <img src="images/346065.png" class="u-logo-image u-logo-image-1">
         </a>
         <div class="u-clearfix u-group-elements u-group-elements-1">
-          <a class="u-custom-font u-font-montserrat u-login u-text-white u-login-1" data-animation-name="customAnimationIn" data-animation-duration="1000" href="login.html" data-page-id="770101918" title="login">Login</a><span class="u-icon u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 53 53" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-f4f9"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 53 53" x="0px" y="0px" id="svg-f4f9" style="enable-background:new 0 0 53 53;"><path style="fill:#E7ECED;" d="M18.613,41.552l-7.907,4.313c-0.464,0.253-0.881,0.564-1.269,0.903C14.047,50.655,19.998,53,26.5,53
+          <a class="u-custom-font u-font-montserrat u-login u-text-white u-login-1" data-animation-name="customAnimationIn" data-animation-duration="1000" href="{% url 'login' %}" data-page-id="770101918" title="login">Login</a><span class="u-icon u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 53 53" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-f4f9"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 53 53" x="0px" y="0px" id="svg-f4f9" style="enable-background:new 0 0 53 53;"><path style="fill:#E7ECED;" d="M18.613,41.552l-7.907,4.313c-0.464,0.253-0.881,0.564-1.269,0.903C14.047,50.655,19.998,53,26.5,53
 	c6.454,0,12.367-2.31,16.964-6.144c-0.424-0.358-0.884-0.68-1.394-0.934l-8.467-4.233c-1.094-0.547-1.785-1.665-1.785-2.888v-3.322
 	c0.238-0.271,0.51-0.619,0.801-1.03c1.154-1.63,2.027-3.423,2.632-5.304c1.086-0.335,1.886-1.338,1.886-2.53v-3.546
 	c0-0.78-0.347-1.477-0.886-1.965v-5.126c0,0,1.053-7.977-9.75-7.977s-9.75,7.977-9.75,7.977v5.126

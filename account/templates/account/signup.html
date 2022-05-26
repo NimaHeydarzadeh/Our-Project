@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html style="font-size: 16px">
   <head>
@@ -6,18 +7,26 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <title>signup</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen" />
-    <link rel="stylesheet" href="signup.css" media="screen" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/nicepage.css' %}"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/signup.css' %}"
+      media="screen"
+    />
     <script
       class="u-script"
       type="text/javascript"
-      src="jquery.js"
+      src="{% static 'js/jquery.js' %}"
       defer=""
     ></script>
     <script
       class="u-script"
       type="text/javascript"
-      src="nicepage.js"
+      src="{% static 'js/nicepage.js' %}"
       defer=""
     ></script>
     <meta name="generator" content="Nicepage 4.11.3, nicepage.com" />
@@ -94,7 +103,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base"
-                  href="Posts.html"
+                  href="{% url 'posts' %}"
                   style="padding: 10px 20px"
                   >Posts</a
                 >
@@ -102,7 +111,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base"
-                  href="Contact.html"
+                  href="{% url 'contact' %}"
                   style="padding: 10px 20px"
                   >Contact</a
                 >
@@ -110,7 +119,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-3-base"
-                  href="About.html"
+                  href="{% url 'about' %}"
                   style="padding: 10px 20px"
                   >About</a
                 >
@@ -132,17 +141,23 @@
                     >
                   </li>
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="Posts.html"
+                    <a
+                      class="u-button-style u-nav-link"
+                      href="{% url 'posts' %}"
                       >Posts</a
                     >
                   </li>
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="Contact.html"
+                    <a
+                      class="u-button-style u-nav-link"
+                      href="{% url 'contact' %}"
                       >Contact</a
                     >
                   </li>
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="About.html"
+                    <a
+                      class="u-button-style u-nav-link"
+                      href="{% url 'about' %}"
                       >About</a
                     >
                   </li>
@@ -158,14 +173,17 @@
           data-image-width="128"
           data-image-height="128"
         >
-          <img src="{% static 'img/main_logo.png' %}" class="u-logo-image u-logo-image-1" />
+          <img
+            src="{% static 'img/main_logo.png' %}"
+            class="u-logo-image u-logo-image-1"
+          />
         </a>
         <div class="u-clearfix u-group-elements u-group-elements-1">
           <a
             class="u-custom-font u-font-montserrat u-login u-text-white u-login-1"
             data-animation-name="customAnimationIn"
             data-animation-duration="1000"
-            href="login.html"
+            href="{% url 'login' %}"
             data-page-id="770101918"
             title="login"
             >Login</a
@@ -278,7 +296,7 @@
                   <a
                     href="#"
                     class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-4-dark-2 u-radius-25 u-btn-1"
-                    >signup</a
+                    >SignUp</a
                   >
                   <input
                     type="submit"
@@ -290,7 +308,7 @@
               </form>
             </div>
             <a
-              href="login.html"
+              href="{% url 'login' %}"
               data-page-id="770101918"
               class="u-border-active-palette-2-base u-border-hover-palette-1-base u-border-none u-btn u-button-style u-login-control u-login-create-account u-none u-text-grey-40 u-text-hover-palette-4-base u-btn-2"
               >I have an account</a
