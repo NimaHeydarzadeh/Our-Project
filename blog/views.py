@@ -21,6 +21,10 @@ def home(request):
     return render(request, 'blog/Home.html', context={})
 
 
+def index(request):
+    return render(request, 'blog/index.html', context={})
+
+
 def post(request):
     # post1 = Post.objects.filter().values('title', 'body', 'like', 'dislike')
     return render(request, 'blog/Post.html', context={})
