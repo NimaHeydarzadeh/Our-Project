@@ -142,17 +142,23 @@
                     >
                   </li>
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="{% url 'posts' %}"
+                    <a
+                      class="u-button-style u-nav-link"
+                      href="{% url 'posts' %}"
                       >Posts</a
                     >
                   </li>
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="{% url 'contact' %}"
+                    <a
+                      class="u-button-style u-nav-link"
+                      href="{% url 'contact' %}"
                       >Contact</a
                     >
                   </li>
                   <li class="u-nav-item">
-                    <a class="u-button-style u-nav-link" href="{% url 'about' %}"
+                    <a
+                      class="u-button-style u-nav-link"
+                      href="{% url 'about' %}"
                       >About</a
                     >
                   </li>
@@ -163,7 +169,7 @@
           </div>
         </nav>
         <a
-          href="https://nicepage.com"
+          href="{% url 'developer' %}"
           class="u-align-left u-image u-logo u-image-1"
           data-image-width="128"
           data-image-height="128"
@@ -270,7 +276,7 @@
                     tristique.
                   </p>
                   <div class="u-social-icons u-spacing-30 u-social-icons-1">
-                    <a class="u-social-url" target="_blank" href=""
+                    <a class="u-social-url" target="_blank" href="https://www.instagram.com/"
                       ><span
                         class="u-file-icon u-icon u-social-facebook u-social-icon u-icon-2"
                         ><img src="{% static 'img/fb.png' %}" alt=""
@@ -398,13 +404,13 @@
                     >More</a
                   >
                   <div class="u-social-icons u-spacing-30 u-social-icons-1">
-                    <a class="u-social-url" target="_blank" href=""
+                    <a class="u-social-url" target="_blank" href="https://whatsapp.com/"
                       ><span
                         class="u-file-icon u-icon u-social-facebook u-social-icon u-text-white u-icon-2"
                         ><img src="{% static 'img/wa2.png' %}" alt=""
                       /></span>
                     </a>
-                    <a class="u-social-url" target="_blank" href=""
+                    <a class="u-social-url" target="_blank" href="https://telegram.com/"
                       ><span
                         class="u-file-icon u-icon u-social-icon u-social-twitter u-text-white u-icon-3"
                         ><img src="{% static 'img/tele2.png' %}" alt=""
@@ -494,13 +500,13 @@
                     >More</a
                   >
                   <div class="u-social-icons u-spacing-30 u-social-icons-1">
-                    <a class="u-social-url" target="_blank" href=""
+                    <a class="u-social-url" target="_blank" href="https://whatsapp.com/"
                       ><span
                         class="u-file-icon u-icon u-social-facebook u-social-icon u-text-white u-icon-1"
                         ><img src="{% static 'img/wa2.png' %}" alt=""
                       /></span>
                     </a>
-                    <a class="u-social-url" target="_blank" href=""
+                    <a class="u-social-url" target="_blank" href="https://telegram.com/"
                       ><span
                         class="u-file-icon u-icon u-social-icon u-social-twitter u-text-white u-icon-2"
                         ><img src="{% static 'img/tele2.png' %}" alt=""
@@ -553,7 +559,7 @@
     <section class="u-backlink u-clearfix u-grey-80">
       <a
         class="u-link"
-        href="https://nicepage.com/website-templates"
+        href="{% url 'developer'%}"
         target="_blank"
       >
         <span>Website Templates</span>
