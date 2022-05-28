@@ -5,6 +5,18 @@ from .models import UserProfile, Post
 # Create your views here.
 
 
+def about(request):
+    return render(request, 'blog/About.html', context={})
+
+
+def contact(request):
+    return render(request, 'blog/Contact.html', context={})
+
+
+def developer(request):
+    return render(request, 'blog/Developer.html', context={})
+
+
 def home(request):
     return render(request, 'blog/Home.html', context={})
 
@@ -17,11 +29,3 @@ def post(request):
 def posts(request):
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={posts1: posts1})
-
-
-def about(request):
-    return render(request, 'blog/About.html', context={})
-
-
-def contact(request):
-    return render(request, 'blog/Contact.html', context={})
