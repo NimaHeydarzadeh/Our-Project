@@ -9,3 +9,5 @@ def login(request):
 
 def signup(request):
     return render(request, 'account/signup.html', context={})
+
+
