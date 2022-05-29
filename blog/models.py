@@ -25,10 +25,8 @@ class UserProfile(models.Model):
 
 class Comment(models.Model):
     body = models.TextField()
-    date_create = models.DateTimeField(auto_now_add=True)
-    date_modify = models.DateTimeField(auto_now=True)
-    # post = models.ForeignKey(
-    #     "Post", on_delete=models.CASCADE)
+    date_create = models.DateTimeField(auto_now_add=True, blank=True)
+    date_modify = models.DateTimeField(auto_now=True, blank=True)
     comment = GenericRelation("Comment")
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
@@ -56,7 +54,7 @@ class Post(models.Model):
     like = models.ManyToManyField(UserProfile, related_name="post_like")
     dislike = models.ManyToManyField(
         UserProfile, related_name="post_dislike", blank=True)
-    comment = models.ManyToManyField(Comment)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         return self.title
