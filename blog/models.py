@@ -56,7 +56,7 @@ class Post(models.Model):
     like = models.ManyToManyField(UserProfile, related_name="post_like")
     dislike = models.ManyToManyField(
         UserProfile, related_name="post_dislike", blank=True)
-    comment = models.ManyToManyField(Comment)
+    comment = models.ManyToManyField(Comment, blank=True)
 
     def __str__(self):
         return self.title
