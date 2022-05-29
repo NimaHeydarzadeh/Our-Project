@@ -26,10 +26,22 @@ def index(request):
 
 
 def post(request):
-    # post1 = Post.objects.filter().values('title', 'body', 'like', 'dislike')
-    return render(request, 'blog/Post.html', context={})
+
+    if request.method == "GET":
+        posts = Post.objects.all()
+        print(posts)
+        print(posts.query)
+        return render(request, 'blog/post.html', context={"post":posts})
+    elif request.method == "POST":
+        pass
+    
 
 
 def posts(request):
+    if request.method == "GET":
+        posts = Post.objects.all()
+        print(posts)
+        print(posts.query)
+        return render(request, 'blog/posts.html', context={"posts":posts})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={posts1: posts1})

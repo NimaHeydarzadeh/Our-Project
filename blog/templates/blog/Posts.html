@@ -336,39 +336,53 @@
 </div>
 </div>
 </section>
-
+{% for post in posts %}<h1>{{ post.body }}</h1>{% endfor %}
 <section class="u-black u-clearfix u-section-3" id="sec-e427">
     <div class="u-align-left u-clearfix u-sheet u-sheet-1">
-      <div class="u-absolute-hcenter u-align-center u-black u-expanded u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" source="custom"
-          name="new post" style="padding: 50px">
-          <div class="u-form-group">
-            <label for="name-d490" class="u-form-control-hidden u-label"></label>
-            <input placeholder="Title" id="name-d490" name="title"
-              class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white" required="required"
-              type="text" maxlength="20" />
-          </div>
-          <div class="u-form-group u-form-message">
-            <label for="message-d490" class="u-form-control-hidden u-label"></label>
-            <textarea placeholder="Enter your post body" rows="7" cols="50" id="message-d490" name="post body"
-              class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white" required=""></textarea>
-          </div>
-          <div class="u-align-left u-form-group u-form-submit">
-            <a href="#"
-              class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-4-dark-1 u-palette-3-base u-radius-50 u-btn-1">Submit New Post</a>
-            <input type="submit" value="submit" class="u-form-control-hidden" />
-          </div>
-          <div class="u-form-send-message u-form-send-success">Thank you! Your post has been created.</div>
-          <div class="u-form-send-error u-form-send-message">Unable to create your post. Please fix errors then try
-            again.</div>
-          <input type="hidden" value="" name="recaptchaResponse" />
-        </form>
-      </div>
-      <div class="u-border-3 u-border-palette-3-base u-shape u-shape-bottom u-shape-right u-shape-1"></div>
-      <div class="u-border-3 u-border-palette-3-base u-shape u-shape-left u-shape-top u-shape-2"></div>
+        <div class="u-absolute-hcenter u-align-center u-black u-expanded u-form u-form-1">
+            <form action="#"
+                  method="POST"
+                  class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form"
+                  source="custom"
+                  name="new post"
+                  style="padding: 50px">
+                <div class="u-form-group">
+                    <label for="name-d490" class="u-form-control-hidden u-label"></label>
+                    <input placeholder="Title"
+                           id="name-d490"
+                           name="title"
+                           class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white"
+                           required="required"
+                           type="text"
+                           maxlength="20"/>
+                </div>
+                <div class="u-form-group u-form-message">
+                    <label for="message-d490" class="u-form-control-hidden u-label"></label>
+                    <textarea placeholder="Enter your post body"
+                              rows="7"
+                              cols="50"
+                              id="message-d490"
+                              name="post body"
+                              class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white"
+                              required=""></textarea>
+                </div>
+                <div class="u-align-left u-form-group u-form-submit">
+                    <a href="#"
+                       class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-4-dark-1 u-palette-3-base u-radius-50 u-btn-1">Submit New Post</a>
+                    <input type="submit" value="submit" class="u-form-control-hidden" />
+                </div>
+                <div class="u-form-send-message u-form-send-success">Thank you! Your post has been created.</div>
+                <div class="u-form-send-error u-form-send-message">
+                    Unable to create your post. Please fix errors then try
+                    again.
+                </div>
+                <input type="hidden" value="" name="recaptchaResponse" />
+            </form>
+        </div>
+        <div class="u-border-3 u-border-palette-3-base u-shape u-shape-bottom u-shape-right u-shape-1"></div>
+        <div class="u-border-3 u-border-palette-3-base u-shape u-shape-left u-shape-top u-shape-2"></div>
     </div>
-  </section>
-
+</section>
 <footer class="u-black u-clearfix u-footer" id="sec-2026">
     <div class="u-align-left u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-social-icons u-spacing-30 u-social-icons-1">
