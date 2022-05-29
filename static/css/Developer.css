@@ -1,4 +1,4 @@
- .u-section-1 {
+.u-section-1 {
   background-image: none;
 }
 
@@ -86,7 +86,7 @@
 
 .u-section-1 .u-image-1 {
   height: 494px;
-  background-image: url("images/rtrr.jpg");
+  background-image: url("../img/home1.jpg");
   background-position: 50% 50%;
   width: 494px;
   margin: 0 auto 0 0;
@@ -267,7 +267,8 @@
     height: 103px;
     margin-left: 207px;
   }
-} .u-section-2 {
+}
+.u-section-2 {
   background-image: linear-gradient(60deg, #adf6f2, #fbeced);
 }
 
