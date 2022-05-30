@@ -68,3 +68,71 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post", kwargs={"slug": self.slug})
+
+    def get_like_count(self):
+        return self.like.count()
+
+    def get_dislike_count(self):
+        return self.dislike.count()
+
+
+# class Likes(models.Model):
+#     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     value = models.BooleanField(default=False)
+#     # date_create = models.DateTimeField(auto_now_add=True, blank=True)
+#     # date_modify = models.DateTimeField(auto_now=True, blank=True)
+#     # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     # object_id = models.PositiveIntegerField()
+#     # content_object = GenericForeignKey('content_type', 'object_id')
+
+#     class Meta:
+#         unique_together = ('user', 'post')
+
+#     def __str__(self):
+#         return str(self.post)
+
+# class dislikes(models.Model):
+#     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     date_create = models.DateTimeField(auto_now_add=True, blank=True)
+#     date_modify = models.DateTimeField(auto_now=True, blank=True)
+#     like = models.BooleanField(default=False)
+#     dislike = models.BooleanField(default=True)
+#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     object_id = models.PositiveIntegerField()
+#     content_object = GenericForeignKey('content_type', 'object_id')
+#     class Meta:
+#         unique_together = ('user', 'post')
+#     def __str__(self):
+#         return self.user.username
+
+# class CommentLike(models.Model):
+#     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+#     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+#     date_create = models.DateTimeField(auto_now_add=True, blank=True)
+#     date_modify = models.DateTimeField(auto_now=True, blank=True)
+#     like = models.BooleanField(default=True)
+#     dislike = models.BooleanField(default=False)
+#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     object_id = models.PositiveIntegerField()
+#     content_object = GenericForeignKey('content_type', 'object_id')
+#     class Meta:
+#         unique_together = ('user', 'comment')
+#     def __str__(self):
+#         return self.user.username
+
+# class CommentDislike(models.Model):
+    # user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    # comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    # date_create = models.DateTimeField(auto_now_add=True, blank=True)
+    # date_modify = models.DateTimeField(auto_now=True, blank=True)
+    # like = models.BooleanField(default=False)
+    # dislike = models.BooleanField(default=True)
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    # object_id = models.PositiveIntegerField()
+    # content_object = GenericForeignKey('content_type', 'object_id')
+    # class Meta:
+    #     unique_together = ('user', 'comment')
+    # def __str__(self):
+    #     return self.user.username

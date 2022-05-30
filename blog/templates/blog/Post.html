@@ -297,8 +297,9 @@
                   method="POST"
                   class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form"
                   source="custom"
-                  name="new comment"
+                  name="new_comment"
                   style="padding: 50px;">
+                  {% csrf_token %}
                 <div class="u-form-group">
                     <label for="name-d490" class="u-form-control-hidden u-label">
                     </label>
@@ -317,7 +318,7 @@
                               rows="5"
                               cols="50"
                               id="message-d490"
-                              name="post body"
+                              name="comment_body"
                               class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white"
                               required=""></textarea>
                 </div>

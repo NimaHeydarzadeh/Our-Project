@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import models
 from .models import UserProfile, Post
 # from .models import Post, UserProfile
@@ -29,19 +29,35 @@ def post(request):
 
     if request.method == "GET":
         posts = Post.objects.all()
-        print(posts)
-        print(posts.query)
+        # print(posts)
+        # print(posts.query)
         return render(request, 'blog/post.html', context={"post":posts})
     elif request.method == "POST":
-        pass
+        print(request.POST.get('comment_body'))
+        return render(request, 'blog/post.html', context={"post": posts})
     
 
 
 def posts(request):
     if request.method == "GET":
         posts = Post.objects.all()
-        print(posts)
-        print(posts.query)
+        # print(posts)
+        # print(posts.query)
         return render(request, 'blog/posts.html', context={"posts":posts})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={posts1: posts1})
+
+# def like_posts(request):
+#     if request.method == "GET":
+#         pass
+#     elif request.method == "POST":
+#         pass
+#     return redirect('blog/posts.html:posts')
+
+
+# def dislike_posts(request):
+#     if request.method == "GET":
+#         pass
+#     elif request.method == "POST":
+#         pass
+#     return redirect('blog/posts.html:posts')
