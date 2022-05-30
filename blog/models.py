@@ -17,7 +17,8 @@ class UserProfile(models.Model):
     modify_date = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
-        return self.user.username
+        s = "User:  {}" + " | " + "picteure : {}"
+        return s.format(self.user.username, self.picture)
 
     def get_absolute_url(self):
         return reverse_lazy("profile", kwargs={"username": self.user.username})
@@ -31,12 +32,14 @@ class Comment(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-
     auther = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     like = models.ManyToManyField(
         UserProfile, related_name="comment_likes")
     dislike = models.ManyToManyField(
         UserProfile, related_name='comment_dislikes')
+
+    def __str__(self):
+        return self.body[:20]
 
     def get_absolute_url(self):
         return reverse("post", kwargs={"post_slug": self.post.slug})+f"#{self.pk}"
@@ -58,7 +61,8 @@ class Post(models.Model):
         Comment, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        s = "author : {}" + " | " + "title : {}"
+        return s.format(self.auth, self.title)
 
     def save(self, *args, **kwargs):
         if not self.slug:
