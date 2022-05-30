@@ -17,8 +17,8 @@ class UserProfile(models.Model):
     modify_date = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
-        s = "User:  {}" + " | " + "picteure : {}"
-        return s.format(self.user.username, self.picture)
+        s = "User:  {}"
+        return s.format(self.user.username)
 
     def get_absolute_url(self):
         return reverse_lazy("profile", kwargs={"username": self.user.username})
