@@ -26,17 +26,16 @@ def index(request):
     return render(request, 'blog/index.html', context={})
 
 
-def post(request):
+def post(request, slug):
 
     if request.method == "GET":
-        posts = Post.objects.all()
+        posts = Post.objects.filter(slug=slug)
         # print(posts)
         # print(posts.query)
-        return render(request, 'blog/post.html', context={"post":posts})
+        return render(request, 'blog/post.html', context={"post": posts})
     elif request.method == "POST":
         print(request.POST.get('comment_body'))
         return render(request, 'blog/post.html', context={"post": posts})
-    
 
 
 def posts(request):
@@ -44,7 +43,7 @@ def posts(request):
         posts = Post.objects.all().annotate(username=models.F('auth__user__username'))
         # print(posts)
         # print(posts.query)
-        return render(request, 'blog/posts.html', context={"posts":posts})
+        return render(request, 'blog/posts.html', context={"posts": posts})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={posts1: posts1})
 
