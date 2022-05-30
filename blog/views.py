@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import models
 from .models import UserProfile, Post
 # from .models import Post, UserProfile
@@ -45,3 +45,18 @@ def posts(request):
         return render(request, 'blog/posts.html', context={"posts":posts})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={posts1: posts1})
+
+def like_posts(request):
+    if request.method == "GET":
+        pass
+    elif request.method == "POST":
+        pass
+    return redirect('blog/posts.html:posts')
+
+
+def dislike_posts(request):
+    if request.method == "GET":
+        pass
+    elif request.method == "POST":
+        pass
+    return redirect('blog/posts.html:posts')
