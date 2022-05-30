@@ -1,3 +1,4 @@
+from multiprocessing import AuthenticationError
 from django.shortcuts import redirect, render
 from django.db import models
 from .models import UserProfile, Post
@@ -40,7 +41,7 @@ def post(request):
 
 def posts(request):
     if request.method == "GET":
-        posts = Post.objects.all()
+        posts = Post.objects.all().annotate(username=models.F('auth__user__username'))
         # print(posts)
         # print(posts.query)
         return render(request, 'blog/posts.html', context={"posts":posts})
