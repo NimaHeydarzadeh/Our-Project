@@ -47,11 +47,11 @@ class Comment(models.Model):
 
 class Post(models.Model):
 
-    slug = models.SlugField(max_length=100, blank=True)
     auth = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=200, blank=True)
     create_date = models.DateTimeField(auto_now_add=True, null=True)
     modify_date = models.DateTimeField(auto_now=True, null=True)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=150)
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
     like = models.ManyToManyField(UserProfile, related_name="post_like")
@@ -66,7 +66,7 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            slug = f"{self.id}-{slugify(self.title)}"
+            slug = f"{self.auth.user_id}-{slugify(self.title)}"
             self.slug = slug
         super().save(*args, **kwargs)
 
