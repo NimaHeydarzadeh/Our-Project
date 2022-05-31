@@ -1,8 +1,11 @@
 from multiprocessing import AuthenticationError
+from django.http import Http404
 from django.shortcuts import redirect, render
 from django.db import models
-from .models import UserProfile, Post
-# from .models import Post, UserProfile
+from .models import UserProfile, Post, Comment
+from django.db.models import Count, Prefetch, F
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -31,9 +34,10 @@ def post(request, slug):
     if request.method == "GET":
         posts = Post.objects.filter(slug=slug).annotate(
             username=models.F('auth__user__username'))
+        comments=Comment.objects.all().annotate(username=models.F('auther__user__username'))
         # print(posts)
         # print(posts.query)
-        return render(request, 'blog/post.html', context={"post": posts})
+        return render(request, 'blog/post.html', context={"post": posts, "comments": comments})
     elif request.method == "POST":
         print(request.POST.get('comment_body'))
         return render(request, 'blog/post.html', context={"post": posts})

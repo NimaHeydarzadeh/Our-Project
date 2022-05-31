@@ -203,6 +203,7 @@
 <div class="u-border-3 u-border-palette-3-dark-1 u-expanded-width u-line u-line-horizontal u-line-2"></div>
 </section>
 {% endfor %}
+{% for comment in comments %}
 <section class="u-black u-clearfix u-section-3" id="carousel_f090">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-align-center u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
@@ -220,12 +221,12 @@
                     <div class="u-align-left u-container-style u-layout-cell u-radius-20 u-right-cell u-shape-round u-size-40 u-white u-layout-cell-2">
                         <div class="u-container-layout u-container-layout-2">
                             <h2 class="u-text u-text-1">
-                                First Comment
+                                {{comment.title}}
                                 <br>
                                 <br>
                             </h2>
                             <p class="u-text u-text-2">
-                                First Comment Body : Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.
+                                {{comment.body}}
                             </p>
                             <div class="u-clearfix u-group-elements u-group-elements-1">
                                 <a href="https://nicepage.com"
@@ -247,51 +248,8 @@
     </div>
 </div>
 </section>
-<section class="u-black u-clearfix u-section-4" id="carousel_afb0">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-align-center u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
-            <div class="u-layout">
-                <div class="u-layout-row">
-                    <div class="u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-20 u-layout-cell-1"
-                         src="">
-                        <div class="u-container-layout u-valign-middle u-container-layout-1">
-                            <div class="u-image u-image-circle u-image-1"
-                                 alt=""
-                                 data-image-width="900"
-                                 data-image-height="638">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="u-align-left u-container-style u-layout-cell u-radius-20 u-right-cell u-shape-round u-size-40 u-white u-layout-cell-2">
-                        <div class="u-container-layout u-container-layout-2">
-                            <h2 class="u-text u-text-1">
-                                Second Comment
-                                <br>
-                                <br>
-                            </h2>
-                            <p class="u-text u-text-2">
-                                Second Comment Body : Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.
-                            </p>
-                            <div class="u-clearfix u-group-elements u-group-elements-1">
-                                <a href="https://nicepage.com"
-                                   class="u-border-none u-btn u-button-style u-none u-btn-1"><span class="u-file-icon u-icon u-icon-1">
-                                    <img src="{% static 'img/dlk2.png' %}" alt="">
-                                </span>
-                                <span style="font-size: 1.5rem;">0</span>
-                            </a>
-                            <a href="https://nicepage.com/k/presentation-html-templates"
-                               class="u-border-none u-btn u-button-style u-none u-btn-2"><span class="u-file-icon u-icon u-icon-2">
-                                <img src="{% static 'img/lk2.png' %}" alt="">
-                                </span> <span style="font-size: 1.5rem;">0</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
+{% endfor %}
+
 <section class="u-black u-clearfix u-section-5" id="sec-6c71">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-align-center u-black u-border-2 u-border-grey-60 u-form u-radius-10 u-form-1">
