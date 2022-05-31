@@ -29,7 +29,8 @@ def index(request):
 def post(request, slug):
 
     if request.method == "GET":
-        posts = Post.objects.filter(slug=slug)
+        posts = Post.objects.filter(slug=slug).annotate(
+            username=models.F('auth__user__username'))
         # print(posts)
         # print(posts.query)
         return render(request, 'blog/post.html', context={"post": posts})
