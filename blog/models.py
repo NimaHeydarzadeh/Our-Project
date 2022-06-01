@@ -31,7 +31,7 @@ class Comment(models.Model):
     date_create = models.DateTimeField(auto_now_add=True, blank=True)
     date_modify = models.DateTimeField(auto_now=True, blank=True)
     comment = GenericRelation("Comment")
-    # post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
@@ -60,8 +60,7 @@ class Post(models.Model):
     like = models.ManyToManyField(UserProfile, related_name="post_like")
     dislike = models.ManyToManyField(
         UserProfile, related_name="post_dislike", blank=True)
-    comment = models.ForeignKey(
-        Comment, on_delete=models.CASCADE, null=True, blank=True)
+    comment = GenericRelation(Comment)
 
     def __str__(self):
         s = "author : {}" + " | " + "title : {}"
