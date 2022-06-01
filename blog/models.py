@@ -65,11 +65,11 @@ class Post(models.Model):
 
     def __str__(self):
         s = "author : {}" + " | " + "title : {}"
-        return s.format(self.auth, self.title)
+        return s.format(self.author, self.title)
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            slug = f"{self.auth.user_id}-{slugify(self.title)}"
+            slug = f"{self.author.user_id}-{slugify(self.title)}"
             self.slug = slug
         super().save(*args, **kwargs)
 

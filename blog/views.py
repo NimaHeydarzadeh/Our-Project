@@ -44,8 +44,6 @@ def post(request, slug):
                                .select_related('author')
                                .annotate(like_count=Count('like'))
                                .annotate(dislike_count=Count('dislike'))
-                               .annotate(comment_body=F('comment__body'))
-                               .annotate(comment_title=F('comment__title'))
                                )
                      )
         )
