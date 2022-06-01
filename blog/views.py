@@ -1,6 +1,6 @@
 from multiprocessing import AuthenticationError
 from django.http import Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.db import models
 from .models import UserProfile, Post, Comment
 from django.db.models import Count, Prefetch, F
@@ -32,12 +32,13 @@ def index(request):
 def post(request, slug):
 
     if request.method == "GET":
-        posts = Post.objects.filter(slug=slug).annotate(
-            username=models.F('auth__user__username'))
-        comments=Comment.objects.all().annotate(username=models.F('auther__user__username'))
+        post = (Post.objects.filter(slug=slug).annotate(username=models.F('auth__user__username')))
+
+        # comments = Comment.objects.annotate(
+        #     username=models.F('auther__user__username'))
         # print(posts)
         # print(posts.query)
-        return render(request, 'blog/post.html', context={"post": posts, "comments": comments})
+        return render(request, 'blog/post.html', context={"post": post})
     elif request.method == "POST":
         print(request.POST.get('comment_body'))
         return render(request, 'blog/post.html', context={"post": posts})

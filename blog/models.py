@@ -25,17 +25,18 @@ class UserProfile(models.Model):
 
 
 class Comment(models.Model):
+
     title = models.CharField(max_length=150)
     body = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True, blank=True)
     date_modify = models.DateTimeField(auto_now=True, blank=True)
     comment = GenericRelation("Comment")
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    # object_id = models.PositiveIntegerField()
+    # content_object = GenericForeignKey('content_type', 'object_id')
     auther = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     like = models.ManyToManyField(
-        UserProfile, related_name="comment_likes",blank=True)
+        UserProfile, related_name="comment_likes", blank=True)
     dislike = models.ManyToManyField(
         UserProfile, related_name='comment_dislikes', blank=True)
 
