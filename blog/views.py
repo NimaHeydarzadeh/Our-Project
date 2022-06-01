@@ -30,53 +30,55 @@ def index(request):
 
 
 
-# def post(request, slug):
-#     try:
-#         if request.method == "POST":
-#             p = Comment(author=request.user.userprofile,
-#                         content_object=Post.objects.get(slug=slug),
-#                         body=request.POST['text'])
-#             p.save()
-#         post = (Post.objects.prefetch_related(
-#             Prefetch('comment',
-#                      queryset=(Comment.objects
-#                                .annotate(username=F('auther__user__username'))
-#                                .select_related('author')
-#                                .annotate(like_count=Count('like'))
-#                                .annotate(dislike_count=Count('dislike'))
-#                                .annotate(comments_count=Count('comment'))
-#                                )
-#                      )
-#         )
-#             .annotate(like_count=Count('like'))
-#             .annotate(dislike_count=Count('dislike'))
-#             .annotate(comments_count=Count('comment'))
-#             .annotate(username=F('auther__user__username'))
-#             .select_related('author')
-#             .get(slug=slug)
-#         )
-#     except Post.DoesNotExist:
-#         raise Http404("Post does not exist")
-
-#     return render(request, 'blog/post.html', context={"post": post})
-
 def post(request, slug):
+    try:
+        if request.method == "POST":
+            p = Comment(author=request.user.userprofile,
+                        content_object=Post.objects.get(slug=slug),
+                        body=request.POST['text'])
+            p.save()
+        post = (Post.objects.prefetch_related(
+            Prefetch('comment',
+                     queryset=(Comment.objects
+                               .annotate(username=F('author__user__username'))
+                               .select_related('author')
+                               .annotate(like_count=Count('like'))
+                               .annotate(dislike_count=Count('dislike'))
+                               .annotate(comment_body=F('comment__body'))
+                               .annotate(comment_title=F('comment__title'))
+                               )
+                     )
+        )
+            .annotate(like_count=Count('like'))
+            .annotate(dislike_count=Count('dislike'))
+            .annotate(comments_count=Count('comment'))
+            .annotate(username=F('author__user__username'))
+            .select_related('author')
+            .get(slug=slug)
+        )
+    except Post.DoesNotExist:
+        raise Http404("Post does not exist")
 
-    if request.method == "GET":
-        posts = Post.objects.filter(slug=slug).annotate(
-            username=models.F('auth__user__username'))
-        # comments=Comment.objects.all().annotate(username=models.F('auther__user__username'))
-        # print(posts)
-        # print(posts.query)
-        return render(request, 'blog/post.html', context={"post": posts})
-    elif request.method == "POST":
-        print(request.POST.get('comment_body'))
-        return render(request, 'blog/post.html', context={"post": posts})
+    return render(request, 'blog/post.html', context={"post": post})
+
+# def post(request, slug):
+
+#     if request.method == "GET":
+#         posts = Post.objects.filter(slug=slug).annotate(
+#             username=models.F('auth__user__username'))
+        
+#         # comments=Comment.objects.all().annotate(username=models.F('author__user__username'))
+#         # print(posts)
+#         # print(posts.query)
+#         return render(request, 'blog/post.html', context={"post": posts})
+#     elif request.method == "POST":
+#         print(request.POST.get('comment_body'))
+#         return render(request, 'blog/post.html', context={"post": posts})
 
 
 def posts(request):
     if request.method == "GET":
-        posts = Post.objects.all().annotate(username=models.F('auth__user__username'))
+        posts = Post.objects.all().annotate(username=models.F('author__user__username'))
         # print(posts)
         # print(posts.query)
         return render(request, 'blog/posts.html', context={"posts": posts})

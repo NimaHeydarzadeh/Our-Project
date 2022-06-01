@@ -30,12 +30,12 @@ class Comment(models.Model):
     body = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True, blank=True)
     date_modify = models.DateTimeField(auto_now=True, blank=True)
-    # comment = GenericRelation("Comment")
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    comment = GenericRelation("Comment")
+    # post = models.ForeignKey('Post', on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    auther = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     like = models.ManyToManyField(
         UserProfile, related_name="comment_likes", blank=True)
     dislike = models.ManyToManyField(
@@ -50,7 +50,7 @@ class Comment(models.Model):
 
 class Post(models.Model):
 
-    auth = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=200, blank=True)
     create_date = models.DateTimeField(auto_now_add=True, null=True)
     modify_date = models.DateTimeField(auto_now=True, null=True)
@@ -60,8 +60,8 @@ class Post(models.Model):
     like = models.ManyToManyField(UserProfile, related_name="post_like")
     dislike = models.ManyToManyField(
         UserProfile, related_name="post_dislike", blank=True)
-    # comment = models.ForeignKey(
-    #     Comment, on_delete=models.CASCADE, null=True, blank=True)
+    comment = models.ForeignKey(
+        Comment, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         s = "author : {}" + " | " + "title : {}"
