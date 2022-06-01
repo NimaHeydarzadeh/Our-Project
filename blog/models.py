@@ -32,7 +32,7 @@ class Comment(models.Model):
     date_modify = models.DateTimeField(auto_now=True, blank=True)
     comment = GenericRelation("Comment")
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE,default=7)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
