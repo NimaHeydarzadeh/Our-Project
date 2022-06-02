@@ -1,10 +1,11 @@
 from multiprocessing import AuthenticationError
 from django.http import Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.db import models
 from .models import UserProfile, Post, Comment
 from django.db.models import Count, Prefetch, F
 from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -82,16 +83,53 @@ def index(request):
     return render(request, 'blog/index.html', context={})
 
 
+# def post(request,post):
+#     post = get_object_or_404(Post, slug=post)
+
+#     # List of active comments for this post
+#     comments = post.comments.filter(active=True)
+
+#     new_comment = None
+
+#     if request.method == 'POST':
+#         # A comment was posted
+#         comment_form = CommentForm(data=request.POST)
+#         if comment_form.is_valid():
+#             # Create Comment object but don't save to database yet
+#             new_comment = comment_form.save(commit=False)
+#             # Assign the current post to the comment
+#             new_comment.post = post
+#             # Save the comment to the database
+#             new_comment.save()
+#     else:
+#         comment_form = CommentForm()
+#     return render(request,
+#                   'blog/post.html',
+#                   {'post': post,
+#                    'comments': comments,
+#                    'new_comment': new_comment,
+#                    'comment_form': comment_form})
 
 def post(request, slug):
     try:
         if request.method == "POST":
-            p = Comment(author=request.user.userprofile,
-                        content_object=Post.objects.get(slug=slug),
-                        body=request.POST('text'))
-            p.save()
-         
-        post = (Post.objects.prefetch_related(Comment
+            
+            new_comment = Comment(author=request.user.userprofile,
+                                  content_type_id=7,object_id=10,
+                                  post_id=Post.objects.get(slug=slug).id,
+                                  body=request.POST['comment_body'],
+                                  title=request.POST['comment_title'])
+            new_comment.save()
+        post = (Post.objects.prefetch_related(
+            Prefetch('comment',
+                     queryset=(Comment.objects
+                               .annotate(username=F('author__user__username'))
+                               .select_related('author')
+                               .annotate(like_count=Count('like'))
+                               .annotate(dislike_count=Count('dislike'))
+                               )
+                     )
+        )
             .annotate(like_count=Count('like'))
             .annotate(dislike_count=Count('dislike'))
             .annotate(comments_count=Count('comment'))
@@ -99,32 +137,20 @@ def post(request, slug):
             .select_related('author')
             .get(slug=slug)
         )
-        )
-        return render(request, 'blog/post.html', context={"comment": post})
-
-
+        comments = post.comments.all()
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
 
-    return render(request, 'blog/post.html', context={"post": post})
-##############################################################################################
-# def post(request, slug):
-
-#     if request.method == "GET":
-#         posts = Post.objects.filter(slug=slug).annotate(
-#             username=models.F('auth__user__username'))
-        
-#         # comments=Comment.objects.all().annotate(username=models.F('author__user__username'))
-#         # print(posts)
-#         # print(posts.query)
-#         return render(request, 'blog/post.html', context={"post": posts})
-#     elif request.method == "POST":
-#         print(request.POST.get('comment_body'))
-#         return render(request, 'blog/post.html', context={"post": posts})
+    return render(request, 'blog/post.html', context={"post": post, "comments": comments})
 
 
 def posts(request):
-    if request.method == "GET":
+    if request.method == "POST":
+        new_post = Post(author=request.user.userprofile,
+                          body=request.POST['post_body'],
+                          title=request.POST['post_title'])
+        new_post.save()
+    elif request.method == "GET":
         posts = Post.objects.all().annotate(username=models.F('author__user__username'))
         print(posts)
         print(posts.query)

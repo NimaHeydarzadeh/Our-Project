@@ -26,13 +26,15 @@ class UserProfile(models.Model):
 
 class Comment(models.Model):
 
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=100)
     body = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True, blank=True)
     date_modify = models.DateTimeField(auto_now=True, blank=True)
     comment = GenericRelation("Comment")
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE,default=7)
+    post = models.ForeignKey(
+        'Post', on_delete=models.CASCADE, related_name='comments')
+    content_type = models.ForeignKey(
+        ContentType, on_delete=models.CASCADE, default=7)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
