@@ -60,10 +60,13 @@ def index(request):
 def post(request, slug):
     try:
         if request.method == "POST":
-            p = Comment(author=request.user.userprofile,
-                        content_object=Post.objects.get(slug=slug),
-                        body=request.POST['text'])
-            p.save()
+            
+            new_comment = Comment(author=request.user.userprofile,
+                                  content_type_id=7,object_id=10,
+                                  post_id=Post.objects.get(slug=slug).id,
+                                  body=request.POST['comment_body'],
+                                  title=request.POST['comment_title'])
+            new_comment.save()
         post = (Post.objects.prefetch_related(
             Prefetch('comment',
                      queryset=(Comment.objects
@@ -89,7 +92,12 @@ def post(request, slug):
 
 
 def posts(request):
-    if request.method == "GET":
+    if request.method == "POST":
+        new_post = Post(author=request.user.userprofile,
+                          body=request.POST['post_body'],
+                          title=request.POST['post_title'])
+        new_post.save()
+    elif request.method == "GET":
         posts = Post.objects.all().annotate(username=models.F('author__user__username'))
         # print(posts)
         # print(posts.query)

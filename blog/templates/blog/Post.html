@@ -235,12 +235,12 @@
                                    class="u-border-none u-btn u-button-style u-none u-btn-1"><span class="u-file-icon u-icon u-icon-1">
                                     <img src="{% static 'img/dlk2.png' %}" alt="">
                                 </span>
-                                <span style="font-size: 1.5rem;">{{comment.dislike_count}}</span>
+                                <span style="font-size: 1.5rem;">{{comment.dislike.count}}</span>
                             </a>
                             <a href="https://nicepage.com/k/presentation-html-templates"
                                class="u-border-none u-btn u-button-style u-none u-btn-2"><span class="u-file-icon u-icon u-icon-2">
                                 <img src="{% static 'img/lk2.png' %}" alt="">
-                                </span> <span style="font-size: 1.5rem;">{{comment.like_count}}</span>
+                                </span> <span style="font-size: 1.5rem;">{{comment.like.count}}</span>
                             </a>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
                     </label>
                     <input placeholder="Title"
                            id="name-d490"
-                           name="title"
+                           name="comment_title"
                            class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white"
                            required="required"
                            type="text"

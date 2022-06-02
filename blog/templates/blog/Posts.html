@@ -217,11 +217,12 @@
                   source="custom"
                   name="new post"
                   style="padding: 50px">
+                  {% csrf_token %}
                 <div class="u-form-group">
                     <label for="name-d490" class="u-form-control-hidden u-label"></label>
                     <input placeholder="Title"
                            id="name-d490"
-                           name="title"
+                           name="post_title"
                            class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white"
                            required="required"
                            type="text"
@@ -233,7 +234,7 @@
                               rows="7"
                               cols="50"
                               id="message-d490"
-                              name="post body"
+                              name="post_body"
                               class="u-custom-font u-font-lato u-input u-input-rectangle u-radius-20 u-white"
                               required=""></textarea>
                 </div>
