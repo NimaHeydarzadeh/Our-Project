@@ -30,7 +30,6 @@ from django.contrib.auth.decorators import login_required
 #     return render(request, 'blog/index.html', context={})
 
 
-
 # def post(request, slug):
 #     try:
 #         if request.method == "POST":
@@ -113,9 +112,9 @@ def index(request):
 def post(request, slug):
     try:
         if request.method == "POST":
-            
+
             new_comment = Comment(author=request.user.userprofile,
-                                  content_type_id=7,object_id=10,
+                                  content_type_id=7, object_id=10,
                                   post_id=Post.objects.get(slug=slug).id,
                                   body=request.POST['comment_body'],
                                   title=request.POST['comment_title'])
@@ -138,17 +137,43 @@ def post(request, slug):
             .get(slug=slug)
         )
         comments = post.comments.all()
+        like_num = request.POST.get('like_num')
+        # dislike_num = request.POST.get('dislike_num')
+        # likes = Post(author=UserProfile.objects.get(pk=2),
+        #              like=like_num, dislike=dislike_num, post=post, content_object=post)
+        # likes.save()
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
 
     return render(request, 'blog/post.html', context={"post": post, "comments": comments})
+##############################################################################################
+# def post(request, slug):
+#     post = (Post.objects.filter(slug=slug)
+#             .select_related('author__user')
+#             .prefetch_related('like__user')
+#             .prefetch_related('dislike__user')
+#             .annotate(like_count=Count('like'))
+#             .annotate(dislike_count=Count('dislike'))
+#             .first())
+#     comments = post.comments.all()
+#     if request.method == "GET":
+#         return render(request, 'blog/post.html', context={"post": post, "comments": comments})
+
+#     elif request.method == "POST":
+#         comment_text = request.POST.get('comment_text')
+#         comment_body = request.POST.get('comment_body')
+#         comment = Comment(author=UserProfile.objects.get(pk=2),
+#                           body=comment_body, title=comment_text, post=post, content_object=post)
+#         comment.save()
+#         return render(request, 'blog/post.html', context={"post": post, "comments": comments})
 
 
+##############################################################################################
 def posts(request):
     if request.method == "POST":
         new_post = Post(author=request.user.userprofile,
-                          body=request.POST['post_body'],
-                          title=request.POST['post_title'])
+                        body=request.POST['post_body'],
+                        title=request.POST['post_title'])
         new_post.save()
     elif request.method == "GET":
         posts = Post.objects.all().annotate(username=models.F('author__user__username'))
