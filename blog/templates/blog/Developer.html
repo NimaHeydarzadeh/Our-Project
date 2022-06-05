@@ -113,63 +113,57 @@
                          class="u-logo-image u-logo-image-1">
                 </a>
                 <div class="u-clearfix u-group-elements u-group-elements-1">
-          {% if is_authenticated %}
-          <a
-            class="u-custom-font u-font-montserrat u-login u-text-white u-login-1"
-            data-animation-name="customAnimationIn"
-            data-animation-duration="1000"
-            href="{% url 'logout' %}"
-            data-page-id="770101918"
-            title="logout"
-            >Logout</a
-          >
-          {% else %}
-          <a
-            class="u-custom-font u-font-montserrat u-login u-text-white u-login-1"
-            data-animation-name="customAnimationIn"
-            data-animation-duration="1000"
-            href="{% url 'login' %}"
-            data-page-id="770101918"
-            title="login"
-            >Login</a
-          >
-          {% endif %}
-                <svg class="u-svg-link"
-                     preserveAspectRatio="xMidYMin slice"
-                     viewBox="0 0 53 53"
-                     style="">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-f69c"></use>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink"
-                     version="1.1"
-                     xml:space="preserve"
-                     class="u-svg-content"
-                     viewBox="0 0 53 53"
-                     x="0px"
-                     y="0px"
-                     id="svg-f69c"
-                     style="enable-background:new 0 0 53 53;">
-                    <path style="fill:#E7ECED;" d="M18.613,41.552l-7.907,4.313c-0.464,0.253-0.881,0.564-1.269,0.903C14.047,50.655,19.998,53,26.5,53
-                    c6.454,0,12.367-2.31,16.964-6.144c-0.424-0.358-0.884-0.68-1.394-0.934l-8.467-4.233c-1.094-0.547-1.785-1.665-1.785-2.888v-3.322
-                    c0.238-0.271,0.51-0.619,0.801-1.03c1.154-1.63,2.027-3.423,2.632-5.304c1.086-0.335,1.886-1.338,1.886-2.53v-3.546
-                    c0-0.78-0.347-1.477-0.886-1.965v-5.126c0,0,1.053-7.977-9.75-7.977s-9.75,7.977-9.75,7.977v5.126
-                    c-0.54,0.488-0.886,1.185-0.886,1.965v3.546c0,0.934,0.491,1.756,1.226,2.231c0.886,3.857,3.206,6.633,3.206,6.633v3.24
-                    C20.296,39.899,19.65,40.986,18.613,41.552z">
-                    </path>
-                    <g>
-                    <path style="fill:#556080;" d="M26.953,0.004C12.32-0.246,0.254,11.414,0.004,26.047C-0.138,34.344,3.56,41.801,9.448,46.76
-                    c0.385-0.336,0.798-0.644,1.257-0.894l7.907-4.313c1.037-0.566,1.683-1.653,1.683-2.835v-3.24c0,0-2.321-2.776-3.206-6.633
-                    c-0.734-0.475-1.226-1.296-1.226-2.231v-3.546c0-0.78,0.347-1.477,0.886-1.965v-5.126c0,0-1.053-7.977,9.75-7.977
-                    s9.75,7.977,9.75,7.977v5.126c0.54,0.488,0.886,1.185,0.886,1.965v3.546c0,1.192-0.8,2.195-1.886,2.53
-                    c-0.605,1.881-1.478,3.674-2.632,5.304c-0.291,0.411-0.563,0.759-0.801,1.03V38.8c0,1.223,0.691,2.342,1.785,2.888l8.467,4.233
-                    c0.508,0.254,0.967,0.575,1.39,0.932c5.71-4.762,9.399-11.882,9.536-19.9C53.246,12.32,41.587,0.254,26.953,0.004z">
-                    </path>
-                    </g>
-                </svg>
-            </span>
-        </div>
+                    {% if is_authenticated %}
+                        <a class="u-custom-font u-font-montserrat u-login u-text-white u-login-1"
+                           data-animation-name="customAnimationIn"
+                           data-animation-duration="1000"
+                           href="{% url 'logout' %}"
+                           data-page-id="770101918"
+                           title="logout">Logout</a><span class="u-icon u-icon-1">
+                {% else %}
+                    <a class="u-custom-font u-font-montserrat u-login u-text-white u-login-1"
+                       data-animation-name="customAnimationIn"
+                       data-animation-duration="1000"
+                       href="{% url 'login' %}"
+                       data-page-id="770101918"
+                       title="login">Login</a><span class="u-icon u-icon-1">
+            {% endif %}
+            <svg class="u-svg-link"
+                 preserveAspectRatio="xMidYMin slice"
+                 viewBox="0 0 53 53"
+                 style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-f69c"></use>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 version="1.1"
+                 xml:space="preserve"
+                 class="u-svg-content"
+                 viewBox="0 0 53 53"
+                 x="0px"
+                 y="0px"
+                 id="svg-f69c"
+                 style="enable-background:new 0 0 53 53;">
+                <path style="fill:#E7ECED;" d="M18.613,41.552l-7.907,4.313c-0.464,0.253-0.881,0.564-1.269,0.903C14.047,50.655,19.998,53,26.5,53
+                c6.454,0,12.367-2.31,16.964-6.144c-0.424-0.358-0.884-0.68-1.394-0.934l-8.467-4.233c-1.094-0.547-1.785-1.665-1.785-2.888v-3.322
+                c0.238-0.271,0.51-0.619,0.801-1.03c1.154-1.63,2.027-3.423,2.632-5.304c1.086-0.335,1.886-1.338,1.886-2.53v-3.546
+                c0-0.78-0.347-1.477-0.886-1.965v-5.126c0,0,1.053-7.977-9.75-7.977s-9.75,7.977-9.75,7.977v5.126
+                c-0.54,0.488-0.886,1.185-0.886,1.965v3.546c0,0.934,0.491,1.756,1.226,2.231c0.886,3.857,3.206,6.633,3.206,6.633v3.24
+                C20.296,39.899,19.65,40.986,18.613,41.552z">
+                </path>
+                <g>
+                <path style="fill:#556080;" d="M26.953,0.004C12.32-0.246,0.254,11.414,0.004,26.047C-0.138,34.344,3.56,41.801,9.448,46.76
+                c0.385-0.336,0.798-0.644,1.257-0.894l7.907-4.313c1.037-0.566,1.683-1.653,1.683-2.835v-3.24c0,0-2.321-2.776-3.206-6.633
+                c-0.734-0.475-1.226-1.296-1.226-2.231v-3.546c0-0.78,0.347-1.477,0.886-1.965v-5.126c0,0-1.053-7.977,9.75-7.977
+                s9.75,7.977,9.75,7.977v5.126c0.54,0.488,0.886,1.185,0.886,1.965v3.546c0,1.192-0.8,2.195-1.886,2.53
+                c-0.605,1.881-1.478,3.674-2.632,5.304c-0.291,0.411-0.563,0.759-0.801,1.03V38.8c0,1.223,0.691,2.342,1.785,2.888l8.467,4.233
+                c0.508,0.254,0.967,0.575,1.39,0.932c5.71-4.762,9.399-11.882,9.536-19.9C53.246,12.32,41.587,0.254,26.953,0.004z">
+                </path>
+                </g>
+            </svg>
+        </span>
     </div>
+</div>
 </header>
 <section class="u-black u-clearfix u-section-1" id="carousel_bc36">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
@@ -190,7 +184,7 @@
     class="u-active-none u-border-1 u-border-white u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1"
     target="_blank">Freepik</a>
                                     </p>
-                                        <div class="u-social-icons u-spacing-10 u-social-icons-1">
+                                    <div class="u-social-icons u-spacing-10 u-social-icons-1">
                                         {% if developer_name == "Farid" %}
                                             <a class="u-social-url"
                                                title="whatsapp"
@@ -213,47 +207,47 @@
                                         <img src="{% static 'img/inst.png' %}" alt="">
                                     </span>
                                 </a>
-                                {% else %}
+                            {% else %}
                                 <a class="u-social-url"
-                                               title="whatsapp"
-                                               target="_blank"
-                                               href="https://whatsapp.com/name"><span class="u-file-icon u-icon u-social-facebook u-social-icon u-text-palette-3-base u-icon-1">
-                                                <img src="{% static 'img/wa.png' %}" alt="">
-                                            </span>
-                                        </a>
-                                        <a class="u-social-url"
-                                           title="telegram"
-                                           target="_blank"
-                                           href="https://telegram.com/name"><span class="u-file-icon u-icon u-social-icon u-social-twitter u-text-palette-3-base u-icon-2">
-                                            <img src="{% static 'img/tele.png' %}" alt="">
-                                        </span>
-                                    </a>
-                                    <a class="u-social-url"
-                                       title="instagram"
-                                       target="_blank"
-                                       href="https://www.instagram.com/name"><span class="u-file-icon u-icon u-social-icon u-social-instagram u-text-palette-3-base u-icon-3">
-                                        <img src="{% static 'img/inst.png' %}" alt="">
-                                    </span>
-                                </a>
-                                {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="u-size-28">
-            <div class="u-layout-col">
-                <div class="u-align-center u-black u-container-style u-layout-cell u-size-60 u-layout-cell-2">
-                    <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-2">
-                        <div class="u-image u-image-circle u-image-1"
-                             data-image-width="1055"
-                             data-image-height="704"></div>
-                        <div class="u-palette-3-base u-shape u-shape-circle u-shape-2"></div>
-                    </div>
-                </div>
+                                   title="whatsapp"
+                                   target="_blank"
+                                   href="https://whatsapp.com/name"><span class="u-file-icon u-icon u-social-facebook u-social-icon u-text-palette-3-base u-icon-1">
+                                    <img src="{% static 'img/wa.png' %}" alt="">
+                                </span>
+                            </a>
+                            <a class="u-social-url"
+                               title="telegram"
+                               target="_blank"
+                               href="https://telegram.com/name"><span class="u-file-icon u-icon u-social-icon u-social-twitter u-text-palette-3-base u-icon-2">
+                                <img src="{% static 'img/tele.png' %}" alt="">
+                            </span>
+                        </a>
+                        <a class="u-social-url"
+                           title="instagram"
+                           target="_blank"
+                           href="https://www.instagram.com/name"><span class="u-file-icon u-icon u-social-icon u-social-instagram u-text-palette-3-base u-icon-3">
+                            <img src="{% static 'img/inst.png' %}" alt="">
+                        </span>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
+</div>
+<div class="u-size-28">
+    <div class="u-layout-col">
+        <div class="u-align-center u-black u-container-style u-layout-cell u-size-60 u-layout-cell-2">
+            <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-2">
+                <div class="u-image u-image-circle u-image-1"
+                     data-image-width="1055"
+                     data-image-height="704"></div>
+                <div class="u-palette-3-base u-shape u-shape-circle u-shape-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -287,12 +281,15 @@
                                       source="email"
                                       name="form"
                                       style="padding: 0px;">
+                                      {% csrf_token %}
                                     <div class="u-form-group u-form-name">
-                                        <label for="name-4c18" class="u-label">Name</label>
+                                        <label for="name-4c18" class="u-label">
+                                            Subject
+                                        </label>
                                         <input type="text"
-                                               placeholder="Enter your Name"
+                                               placeholder="Subject"
                                                id="name-4c18"
-                                               name="name"
+                                               name="subject"
                                                class="u-border-2 u-border-grey-5 u-grey-5 u-input u-input-rectangle u-radius-10"
                                                required="">
                                     </div>
