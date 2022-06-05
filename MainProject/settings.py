@@ -55,6 +55,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'MainProject.urls'
 
 LOGIN_REDIRECT_URL = '/account/profile/'
+LOGOUT_REDIRECT_URL = '/account/login/'
 
 TEMPLATES = [
     {

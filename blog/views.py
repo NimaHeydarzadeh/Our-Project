@@ -68,55 +68,44 @@ from django.urls import resolve
 
 ##############################################################################################
 def about(request):
-
-    return render(request, 'blog/About.html', context={})
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
+    return render(request, 'blog/About.html', context={"is_authenticated":is_authenticated})
 
 
 def contact(request):
-    return render(request, 'blog/Contact.html', context={})
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
+    return render(request, 'blog/Contact.html', context={"is_authenticated": is_authenticated})
 
 
 def developer(request):
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
     developer_name = resolve(request.path_info).url_name
-    return render(request, 'blog/Developer.html', context={"developer_name": developer_name})
+    return render(request, 'blog/Developer.html', context={"developer_name": developer_name, "is_authenticated": is_authenticated})
 
 
 def home(request):
-    return render(request, 'blog/Home.html', context={})
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
+    return render(request, 'blog/Home.html', context={"is_authenticated": is_authenticated})
 
-
-def index(request):
-    return render(request, 'blog/index.html', context={})
-
-
-# def post(request,post):
-#     post = get_object_or_404(Post, slug=post)
-
-#     # List of active comments for this post
-#     comments = post.comments.filter(active=True)
-
-#     new_comment = None
-
-#     if request.method == 'POST':
-#         # A comment was posted
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
-#             # Create Comment object but don't save to database yet
-#             new_comment = comment_form.save(commit=False)
-#             # Assign the current post to the comment
-#             new_comment.post = post
-#             # Save the comment to the database
-#             new_comment.save()
-#     else:
-#         comment_form = CommentForm()
-#     return render(request,
-#                   'blog/post.html',
-#                   {'post': post,
-#                    'comments': comments,
-#                    'new_comment': new_comment,
-#                    'comment_form': comment_form})
 
 def post(request, slug):
+
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
 
     try:
         comment_saved = True
@@ -151,19 +140,22 @@ def post(request, slug):
             .get(slug=slug)
         )
         comments = post.comments.all()
-        # like_num = request.POST.get('like_num')
-        # dislike_num = request.POST.get('dislike_num')
         # likes = Post(author=UserProfile.objects.get(pk=2),
         #              like=like_num, dislike=dislike_num, post=post, content_object=post)
         # likes.save()
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
 
-    return render(request, 'blog/post.html', context={"post": post, "comments": comments, "comment_saved": comment_saved})
+    return render(request, 'blog/post.html', context={"post": post, "comments": comments, "comment_saved": comment_saved, "is_authenticated": is_authenticated})
 
 
 
 def posts(request):
+
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
 
     post_saved = True
     if request.method == "POST":
@@ -180,12 +172,17 @@ def posts(request):
         posts = Post.objects.all().annotate(username=models.F('author__user__username'))
         # print(posts)
         # print(posts.query)
-        return render(request, 'blog/posts.html', context={"posts": posts, "post_saved": post_saved})
+        return render(request, 'blog/posts.html', context={"posts": posts, "post_saved": post_saved, "is_authenticated": is_authenticated})
     posts1 = Post.objects.all()
-    return render(request, 'blog/Posts.html', context={"posts1": posts1})
+    return render(request, 'blog/Posts.html', context={"posts1": posts1, "is_authenticated": is_authenticated})
 
 
 def Messages(request):
+
+    if request.user.is_authenticated:
+        is_authenticated = True
+    else:
+        is_authenticated = False
 
     message_saved = True
     if request.method == "POST":
@@ -198,7 +195,7 @@ def Messages(request):
         except:
             message_saved = False
 
-        return render(request, 'blog/posts.html', context={"message_saved": message_saved})
+        return render(request, 'blog/posts.html', context={"message_saved": message_saved, "is_authenticated": is_authenticated})
 
 
 # def like_posts(request):

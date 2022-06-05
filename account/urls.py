@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import include, path
 from account import views
 from django.contrib.auth.views import LoginView
@@ -15,5 +16,6 @@ urlpatterns = [
         authentication_form=UserLoginForm
     ), name="login"),
     path('profile/', views.profile, name='profile'),
+    path('logout/', views.logout_view, name='logout'),
     
 ]
