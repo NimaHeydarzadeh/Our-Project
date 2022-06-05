@@ -363,13 +363,16 @@
                               class="u-form-control-hidden"
                             />
                           </div>
+                          {% if message_saved %}
                           <div class="u-form-send-message u-form-send-success">
                             Thank you! Your message has been sent.
                           </div>
+                          {% else %}
                           <div class="u-form-send-error u-form-send-message">
                             Unable to send your message. Please fix errors then
                             try again.
                           </div>
+                          {% endif %}
                           <input
                             type="hidden"
                             value=""

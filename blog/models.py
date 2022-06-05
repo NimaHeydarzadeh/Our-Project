@@ -89,6 +89,9 @@ class Messages(models.Model):
     message = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True, blank=True)
     date_modify = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return self.subject[:20]
     
 
 
