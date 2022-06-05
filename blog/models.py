@@ -84,14 +84,12 @@ class Post(models.Model):
         return self.dislike.count()
 
 class Messages(models.Model):
-    name=models.CharField(max_length=100)
+    subject=models.CharField(max_length=80)
     email=models.EmailField()
     message = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True, blank=True)
     date_modify = models.DateTimeField(auto_now=True, blank=True)
     
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
 
 
 # class Likes(models.Model):

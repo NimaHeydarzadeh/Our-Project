@@ -11,6 +11,7 @@ class developer_urls:
 urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    # path('success/', successView, name='success'),
     # path('developer/<str:developer_name>', views.developer, name='developer'),
     path('developer/',include(developer_urls)),
     path('home/', views.home, name='home'),

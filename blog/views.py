@@ -6,7 +6,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db import models
 from django.urls import get_urlconf
-from .models import UserProfile, Post, Comment
+from .models import UserProfile, Post, Comment, Messages
 from django.db.models import Count, Prefetch, F
 from django.contrib.auth.decorators import login_required
 from django.urls import resolve
@@ -80,7 +80,19 @@ def contact(request):
         is_authenticated = True
     else:
         is_authenticated = False
-    return render(request, 'blog/Contact.html', context={"is_authenticated": is_authenticated})
+
+    message_saved = True
+    if request.method == "POST":
+        new_message = Messages(subject=request.POST['subject'],
+                               message=request.POST['message'],
+                               email=request.POST['email'])
+        try:
+            new_message.save()
+            message_saved = True
+        except:
+            message_saved = False
+
+    return render(request, 'blog/Contact.html', context={"message_saved": message_saved,"is_authenticated": is_authenticated})
 
 
 def developer(request):
@@ -175,28 +187,6 @@ def posts(request):
         return render(request, 'blog/posts.html', context={"posts": posts, "post_saved": post_saved, "is_authenticated": is_authenticated})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={"posts1": posts1, "is_authenticated": is_authenticated})
-
-
-def Messages(request):
-
-    if request.user.is_authenticated:
-        is_authenticated = True
-    else:
-        is_authenticated = False
-
-    message_saved = True
-    if request.method == "POST":
-        new_message = Messages(name=request.POST['name'],
-                               messege=request.POST['message'],
-                               email=request.POST['email'])
-        try:
-            new_message.save()
-            message_saved = True
-        except:
-            message_saved = False
-
-        return render(request, 'blog/posts.html', context={"message_saved": message_saved, "is_authenticated": is_authenticated})
-
 
 # def like_posts(request):
 #     if request.method == "GET":
