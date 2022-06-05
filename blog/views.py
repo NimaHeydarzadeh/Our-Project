@@ -108,6 +108,9 @@ def post(request, slug):
             .select_related('author')
             .get(slug=slug)
         )
+        # print(request.GET.get('like_button'))
+        # if request.POST.get('like_button'):
+        #     post.like.add(request.user.userprofile)
         comments = post.comments.all()
         # likes = Post(author=UserProfile.objects.get(pk=2),
         #              like=like_num, dislike=dislike_num, post=post, content_object=post)
@@ -144,18 +147,3 @@ def posts(request):
         return render(request, 'blog/posts.html', context={"posts": posts, "post_saved": post_saved, "is_authenticated": is_authenticated})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={"posts1": posts1, "is_authenticated": is_authenticated})
-
-# def like_posts(request):
-#     if request.method == "GET":
-#         pass
-#     elif request.method == "POST":
-#         pass
-#     return redirect('blog/posts.html:posts')
-
-
-# def dislike_posts(request):
-#     if request.method == "GET":
-#         pass
-#     elif request.method == "POST":
-#         pass
-#     return redirect('blog/posts.html:posts')
