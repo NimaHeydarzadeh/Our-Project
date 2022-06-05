@@ -243,13 +243,16 @@
                        class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-4-dark-1 u-palette-3-base u-radius-50 u-btn-1">Submit</a>
                     <input type="submit" value="submit" class="u-form-control-hidden" />
                 </div>
+                {% if post_saved %}
                 <div class="u-form-send-message u-form-send-success">
                     Thank you! Your post has been created.
                 </div>
+                {% else %}
                 <div class="u-form-send-error u-form-send-message">
                     Unable to create your post. Please fix errors then try
                     again.
                 </div>
+                {% endif %}
                 <input type="hidden" value="" name="recaptchaResponse" />
             </form>
         </div>

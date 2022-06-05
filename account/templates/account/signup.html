@@ -261,7 +261,11 @@
                 name="form"
                 style="padding: 30px"
               >
-                <div class="u-form-group u-form-name">
+                {% csrf_token %}
+                
+                {{register_form}}
+
+                {% comment %} <div class="u-form-group u-form-name">
                   <label for="username-a30d" class="u-label">Username *</label>
                   <input
                     type="text"
@@ -272,6 +276,7 @@
                     required=""
                   />
                 </div>
+
                 <div class="u-form-group u-form-password">
                   <label for="password-a30d" class="u-label">Password *</label>
                   <input
@@ -282,8 +287,9 @@
                     class="u-grey-5 u-input u-input-rectangle u-radius-25 u-input-2"
                     required=""
                   />
-                </div>
-                <div class="u-form-checkbox u-form-group">
+                </div> {% endcomment %}
+
+                {% comment %} <div class="u-form-checkbox u-form-group">
                   <input
                     type="checkbox"
                     id="checkbox-a30d"
@@ -291,7 +297,8 @@
                     value="On"
                   />
                   <label for="checkbox-a30d" class="u-label">Remember me</label>
-                </div>
+                </div> {% endcomment %}
+
                 <div class="u-align-right u-form-group u-form-submit">
                   <a
                     href="#"

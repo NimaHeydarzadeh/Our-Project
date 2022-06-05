@@ -1,16 +1,22 @@
 from multiprocessing import AuthenticationError
+from nturl2path import url2pathname
+from unicodedata import name
+from wsgiref.util import request_uri
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db import models
+from django.urls import get_urlconf
 from .models import UserProfile, Post, Comment
 from django.db.models import Count, Prefetch, F
 from django.contrib.auth.decorators import login_required
+from django.urls import resolve
 
 
 # Create your views here.
 
 
 def about(request):
+        
     return render(request, 'blog/About.html', context={})
 
 
@@ -19,7 +25,8 @@ def contact(request):
 
 
 def developer(request):
-    return render(request, 'blog/Developer.html', context={})
+    developer_name = resolve(request.path_info).url_name
+    return render(request, 'blog/Developer.html', context={"developer_name":developer_name})
 
 
 def home(request):
@@ -58,15 +65,22 @@ def index(request):
 #                    'comment_form': comment_form})
 
 def post(request, slug):
+
     try:
+        comment_saved = True
         if request.method == "POST":
-            
+
             new_comment = Comment(author=request.user.userprofile,
-                                  content_type_id=7,object_id=10,
+                                  content_type_id=7, object_id=10,
                                   post_id=Post.objects.get(slug=slug).id,
                                   body=request.POST['comment_body'],
                                   title=request.POST['comment_title'])
-            new_comment.save()
+            try:
+                new_comment.save()
+                comment_saved = True
+            except:
+                comment_saved = False
+
         post = (Post.objects.prefetch_related(
             Prefetch('comment',
                      queryset=(Comment.objects
@@ -88,22 +102,46 @@ def post(request, slug):
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
 
-    return render(request, 'blog/post.html', context={"post": post, "comments": comments})
+    return render(request, 'blog/post.html', context={"post": post, "comments": comments, "comment_saved": comment_saved})
 
 
 def posts(request):
+
+    post_saved = True
     if request.method == "POST":
         new_post = Post(author=request.user.userprofile,
-                          body=request.POST['post_body'],
-                          title=request.POST['post_title'])
-        new_post.save()
+                        body=request.POST['post_body'],
+                        title=request.POST['post_title'])
+        try:
+            new_post.save()
+            post_saved = True
+        except:
+            post_saved = False
+
     elif request.method == "GET":
         posts = Post.objects.all().annotate(username=models.F('author__user__username'))
         # print(posts)
         # print(posts.query)
-        return render(request, 'blog/posts.html', context={"posts": posts})
+        return render(request, 'blog/posts.html', context={"posts": posts, "post_saved": post_saved})
     posts1 = Post.objects.all()
     return render(request, 'blog/Posts.html', context={posts1: posts1})
+
+
+def Messages(request):
+
+    message_saved = True
+    if request.method == "POST":
+        new_message = Messages(name=request.POST['name'],
+                        messege=request.POST['message'],
+                        email=request.POST['email'])
+        try:
+            new_message.save()
+            message_saved = True
+        except:
+            message_saved = False
+
+        return render(request, 'blog/posts.html', context={ "message_saved": message_saved})
+
 
 # def like_posts(request):
 #     if request.method == "GET":
@@ -119,3 +157,4 @@ def posts(request):
 #     elif request.method == "POST":
 #         pass
 #     return redirect('blog/posts.html:posts')
+

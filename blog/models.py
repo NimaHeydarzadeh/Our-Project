@@ -44,7 +44,7 @@ class Comment(models.Model):
         UserProfile, related_name='comment_dislikes', blank=True)
 
     def __str__(self):
-        return self.body[:20]
+        return self.title[:20]
 
     def get_absolute_url(self):
         return reverse("post", kwargs={"post_slug": self.post.slug})+f"#{self.pk}"
@@ -82,6 +82,16 @@ class Post(models.Model):
 
     def get_dislike_count(self):
         return self.dislike.count()
+
+class Messages(models.Model):
+    name=models.CharField(max_length=100)
+    email=models.EmailField()
+    message = models.TextField()
+    date_create = models.DateTimeField(auto_now_add=True, blank=True)
+    date_modify = models.DateTimeField(auto_now=True, blank=True)
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 
 # class Likes(models.Model):
